@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.llnl.gnem</groupId>
+	<artifactId>response</artifactId>
+	<version>1.0</version>
+	<name>LLNL2 Response Processing</name>
+	<url>http://www.llnl.gov</url>
+
+	<organization>
+		<name>Lawrence Livermore National Laboratory (LLNL)</name>
+		<url>http://www.llnl.gov</url>
+	</organization>
+
+	<packaging>jar</packaging>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+		<maven.dependency.plugin.version>3.5.0</maven.dependency.plugin.version>
+		<maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
+		<maven.resources.plugin.version>3.3.0</maven.resources.plugin.version>
+		<maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+		<maven.shade.plugin.version>3.4.1</maven.shade.plugin.version>
+		<license-maven-plugin.version>1.20</license-maven-plugin.version>
+
+		<regexp.version>1.1.4</regexp.version>
+		<fissuresidl.version>1.0.1</fissuresidl.version>
+		<fissuresimpl.version>1.1.13</fissuresimpl.version>
+		<seis-file.version>2.0.5</seis-file.version>
+		<iris-ws.version>2.20.1</iris-ws.version>
+		<unit-ri.version>1.0.3</unit-ri.version>
+		<systems-quantity.version>2.1</systems-quantity.version>
+		<systems-common.version>2.1</systems-common.version>
+		<commons-jcs.version>2.2.1</commons-jcs.version>
+		<glassfish-corba-omgapi.version>4.2.4</glassfish-corba-omgapi.version>
+		<commons-lang.version>3.12.0</commons-lang.version>
+		<commons-math.version>3.6.1</commons-math.version>
+		<oregondsp.version>2.2.1</oregondsp.version>
+		<junit.version>4.13.2</junit.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>gnu-regexp</groupId>
+			<artifactId>gnu-regexp</artifactId>
+			<version>${regexp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.iris</groupId>
+			<artifactId>FissuresIDL</artifactId>
+			<version>${fissuresidl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.iris</groupId>
+			<artifactId>FissuresImpl</artifactId>
+			<version>${fissuresimpl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.sc.seis</groupId>
+			<artifactId>seisFile</artifactId>
+			<version>${seis-file.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.iris.dmc</groupId>
+			<artifactId>IRIS-WS</artifactId>
+			<version>${iris-ws.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>tec.units</groupId>
+			<artifactId>unit-ri</artifactId>
+			<version>${unit-ri.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>systems.uom</groupId>
+			<artifactId>systems-quantity</artifactId>
+			<version>${systems-quantity.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>systems.uom</groupId>
+			<artifactId>systems-common</artifactId>
+			<version>${systems-common.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-jcs-core</artifactId>
+			<version>${commons-jcs.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.corba</groupId>
+			<artifactId>glassfish-corba-omgapi</artifactId>
+			<version>${glassfish-corba-omgapi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>${commons-math.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.oregondsp</groupId>
+			<artifactId>OregonDSP</artifactId>
+			<version>${oregondsp.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<fork>true</fork>
+					<compilerVersion>${maven.compiler.target}</compilerVersion>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven.dependency.plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven.source.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven.jar.plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Implementation-Version>${project.version}</Implementation-Version>
+							<Implementation-Build>${buildNumber}</Implementation-Build>
+							<Build-Branch>${scmBranch}</Build-Branch>
+							<Build-Timestamp>${maven.build.timestamp}</Build-Timestamp>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<!-- create uber-jar so we can execute java -cp with our one
+			produced 
+            jar -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>${maven.shade.plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
+							<!--Additional configuration. -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Provides the capability to query pom for 3rd party dependencies -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>${license-maven-plugin.version}</version>
+				<configuration>
+					<!-- There are other options available as this tool can add
+					license 
+                    headers to your files -->
+					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+					<failOnMissingHeader>false</failOnMissingHeader>
+					<failOnNotUptodateHeader>false</failOnNotUptodateHeader>
+					<inceptionYear>2023</inceptionYear>
+					<organizationName>Lawrence Livermore National Laboratory</organizationName>
+					<licenseName>apache_v2</licenseName>
+					<descriptionTemplate>${basedir}/src/license/DescriptionTemplate.ftl</descriptionTemplate>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-cli</id>
+						<configuration>
+							<licenseMerges>
+								<licenseMerge>The Apache Software License,
+									Version 2.0|Apache Public License 2.0</licenseMerge>
+								<licenseMerge>The Apache Software License,
+									Version 2.0|Apache-2.0</licenseMerge>
+								<licenseMerge>The Apache Software License,
+									Version 2.0|Apache 2</licenseMerge>
+								<licenseMerge>The Apache Software License,
+									Version 2.0|Apache v2</licenseMerge>
+								<licenseMerge>The Apache Software License,
+									Version 2.0|Apache 2.0 License</licenseMerge>
+								<licenseMerge>The Apache Software License,
+									Version 2.0|Apache License Version 2.0</licenseMerge>
+								<licenseMerge>The Apache Software License,
+									Version 2.0|Apache License 2.0</licenseMerge>
+								<licenseMerge>The Apache Software License,
+									Version 2.0|Apache License, Version 2.0</licenseMerge>
+							</licenseMerges>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

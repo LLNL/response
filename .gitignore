@@ -1,0 +1,12 @@
+*.swp
+*~
+.DS_Store
+*.class
+dependency-reduced-pom.xml
+target/*
+codaRatioTest/**
+.settings/**
+/target/
+/nbproject/
+/.sonar/
+/bin/
